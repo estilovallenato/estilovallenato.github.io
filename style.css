@@ -1,0 +1,148 @@
+/* --- Variables de Color --- */
+:root {
+    --color-bg: #121212;         /* Fondo oscuro principal */
+    --color-glass-bg: rgba(255, 255, 255, 0.05); /* Fondo del vidrio */
+    --color-glass-border: rgba(255, 255, 255, 0.1); /* Borde del vidrio */
+    --color-gold: #FFD700;       /* Dorado principal */
+    --color-silver: #C0C0C0;     /* Plateado (para texto) */
+    --color-text: #E0E0E0;       /* Texto principal (blanco-plata) */
+    --color-shape-1: #DAA520;    /* Dorado oscuro para forma */
+    --color-shape-2: #4a90e2;    /* Azul (del logo original) para forma */
+}
+
+/* --- Reseteo y Estilos Globales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    overflow: hidden; /* Oculta las formas que se salen */
+    position: relative;
+}
+
+/* --- Formas de Fondo (para que el blur funcione) --- */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.shape-1 {
+    width: 350px;
+    height: 350px;
+    background: var(--color-shape-1);
+    top: -100px;
+    left: -100px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--color-shape-2);
+    bottom: -80px;
+    right: -80px;
+}
+
+/* --- Contenedor de Vidrio Principal --- */
+.glass-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    border-radius: 24px;
+    text-align: center;
+    z-index: 1;
+
+    /* El Efecto Glassmorphism */
+    background: var(--color-glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); /* Para Safari */
+    border: 1px solid var(--color-glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+    /* Transición para el efecto JS */
+    transition: transform 0.1s ease;
+}
+
+/* --- Sección del Perfil --- */
+.profile .logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-gold);
+    margin-bottom: 1rem;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.profile .title {
+    font-size: 1.75rem;
+    color: var(--color-gold);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.profile .description {
+    font-size: 0.95rem;
+    color: var(--color-silver);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+/* --- Sección de Cajas de Enlaces --- */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.link-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    
+    /* Efecto Glass Anidado */
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-glass-border);
+    
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.link-box:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.03); /* Efecto de zoom */
+}
+
+.link-box i {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+    width: 20px; /* Alinea los textos */
+}
+
+/* Color especial para WhatsApp */
+.link-box.whatsapp {
+    background: #25D366;
+    color: #FFF;
+    font-weight: 700;
+    border: none;
+}
+.link-box.whatsapp:hover {
+    background: #1EAE54;
+}
